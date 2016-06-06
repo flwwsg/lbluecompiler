@@ -1,0 +1,31 @@
+#This is a make file for lbcp.cxx
+#
+#author : DJW
+#
+#date:	Sat Apr 18 10:23:37 CST 2015
+#
+
+GPP = g++-4.8 -std=c++11 -g -Wall
+OUT = lbcp.o
+OBJ = lbcp
+DEP = std_lb.h  lbcp.h  lbcp.cxx lbwork.cxx\
+			handling.h handling_lsw.cxx\
+			handling_itp.cxx
+
+INS = lbwork.cxx
+
+$(OBJ): $(OUT) 
+#$(FLLIBL) $(FLLIBFL)
+# 	@printf "\n"
+	@printf "\n=====================generating $(OBJ)================== \n"
+	@printf "\n"
+	$(GPP) $(OUT) \
+	-o $(OBJ)
+# $(FLLIBL) $(FLLIBFL) $(FLLIBF)
+
+$(OUT): $(DEP)
+	$(GPP) \
+	-c $(INS) -o $(OUT)
+
+clean:
+	rm *.o

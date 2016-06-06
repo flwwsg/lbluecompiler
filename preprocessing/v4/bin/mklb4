@@ -1,0 +1,51 @@
+#This is a make file for lbcp.cxx
+#
+#author : DJW
+#
+#date:	Sat Apr 18 10:23:37 CST 2015
+#
+vpath %.cxx ../src
+vpath %.h ../headers
+
+GPP = g++-4.8 -std=c++11 -g -Wall
+# OUTDEP = work.o lbcp.a 
+OBJ = lbcp
+# OUT = work.o
+# DEP = std_lb.h  pplbcp.h  lbwork.cxx
+
+
+lbcp: work.o pplbcp.a
+	@printf "\n=====================generating $(OBJ)================== \n"
+	@printf "\n"
+	$(GPP) work.o pplbcp.a \
+	-o $@
+
+work.o: lbwork.cxx std_lb.h pplbcp.h
+	$(GPP) -c $<  -o $@
+
+pplbcp.a: pplbcp.o handle.o lsw.o itp.o rtp.o pause.o jmp.o
+	$(AR) $(ARFLAGS) $@  $?
+	
+pplbcp.o: pplbcp.cxx std_lb.h pplbcp.h lbcp.cxx
+	$(GPP) -c $< -o $@
+
+handle.o: handling.cxx handling.h std_lb.h
+	$(GPP) -c $< -o $@
+	
+lsw.o: handling_lsw.cxx  std_lb.h pplbcp.h  handling.cxx
+	$(GPP) -c $< -o $@
+	
+itp.o: handling_itp.cxx  std_lb.h pplbcp.h  handling.cxx
+	$(GPP) -c $< -o $@
+	
+rtp.o: handling_rtp.cxx  std_lb.h pplbcp.h  handling.cxx
+	$(GPP) -c $< -o $@
+	
+pause.o: handling_pause.cxx  std_lb.h pplbcp.h  handling.cxx
+	$(GPP) -c $< -o $@
+	
+jmp.o: handling_jmp.cxx  std_lb.h pplbcp.h  handling.cxx
+	$(GPP) -c $< -o $@
+	
+clean:
+	rm *.o

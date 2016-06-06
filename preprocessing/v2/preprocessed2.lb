@@ -1,0 +1,50 @@
+result of preprocessing for LBlue processor. all of imm are hex. tab width = 4
+
+lw R1, R2(imm);	 	-->	80 R1  R2  imm      //done
+lw R1, #imm;			-->	80 R1  r0  imm		//done
+
+sw R1, R2(imm);		-->	81 R1  R2  imm		//done
+sw R1, #imm;			-->	81 R1  r0 imm			//done
+
+beq R1, R2, #imm;		-->	82 R1  R2  imm	//done
+
+bne R1, R2, #imm;		-->	83 R1  R2  imm	//done
+
+jmp #imm;				-->	C0 r0 r0 imm
+
+add R1, R2, R3;			-->	01 R1  R2  R3
+add R1, R2;				-->	01 R1  R2  r0
+
+sub R1, R2, R3;			-->	02 R1  R2  R3
+
+and R1, R2, R3;			-->	10 R1  R2  R3
+
+or R1, R2, R3;				-->	11 R1  R2  R3
+
+xor R1, R2, R3;			-->	12 R1  R2  R3
+
+nor R1, R2, R3;			-->	13 R1  R2  R3
+
+slt R1, R2, R3;			-->	20 R1  R2  R3
+
+addi R1, R2, #imm;	-->	90 R1  R2 imm		//done
+
+andi R1, R2, #imm;	-->	91 R1  R2 imm		//done
+
+ori R1, R2, #imm;		-->	92 R1  R2 imm	//done
+
+xori R1, R2, #imm;	-->	93 R1  R2 imm		//done
+
+slti R1, R2, #imm;		-->	94 R1  R2 imm	//done
+
+pause R1, R2;				-->	F0 R1  R2
+pause ;						--> 	F0 r0  r0
+
+not R1, R2;				-->	93 R1  R2 FFFF
+
+neg R1, R3;				-->	02 R1  r0 R3
+
+subi R1, R2, #imm		-->	90 R1  R2  R3  IMM 			(2's comment of imm)
+
+mov R1, R2;				-->	01 R1  R2  r0
+

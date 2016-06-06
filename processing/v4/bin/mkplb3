@@ -1,0 +1,30 @@
+#This is a make file for lbcp.cxx
+#
+#author : DJW
+#
+#date:	Mon Apr 20 14:28:27 CST 2015
+#
+vpath %.cxx ../src
+vpath %.h ../headers
+
+GPP = g++-4.8 -std=c++11 -g -Wall
+OBJ =ts 
+
+
+ts: plbcp_test.cxx plbcp.a
+	@printf "\n=====================generating $(OBJ)================== \n"
+	@printf "\n"
+	$(GPP)  $^ \
+	-o $@
+	
+plbcp.a: plbcp.o sub_plbcp.o
+	$(AR) $(ARFLAGS) $@ $?
+	
+plbcp.o: plbcp.cxx plbcp.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+sub_plbcp.o: sub_plbcp.cxx plbcp.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+clean:
+	rm *.o

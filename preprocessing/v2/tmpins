@@ -1,0 +1,6 @@
+Lw  r14,  r13 (imm);	 	-->	80 rd  rs  imm
+LW  r12, # imm;			-->	80 rd  r0  imm
+
+sw  R9, r0 (IMM);		-->	81 rs  rt  imm
+SW  r1, # imm;			-->	81 rs  r0 imm
+addi R1, R2, #immm;	-->	90 R1  R2 immm		//done

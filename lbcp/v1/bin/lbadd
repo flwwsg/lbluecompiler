@@ -1,0 +1,14 @@
+xor r1, r1, r1;
+addi r1, r0, #FFFF;r1 = FFFFFFFF
+addi r2, r0, #0FFF;r2 = 00000FFF
+pause r1, r2;
+and r3, r1,r2; r3 = 00000FFF
+pause r3, r3;
+xor r3, r3, r3;r3 = 0;
+pause r3, r3;
+or r4, r2, r0;	r4 = r2 = 00000FFF
+pause r4, r1;
+nor r4, r0, r4; r4 = ~(r0 | r4) = FFFFF000
+pause r4, r2;
+slt r5, r4, r1;	r5= 1;
+pause r5, r5;

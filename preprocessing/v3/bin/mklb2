@@ -1,0 +1,48 @@
+#This is a make file for lbcp.cxx
+#
+#author : DJW
+#
+#date:	Sat Apr 18 10:23:37 CST 2015
+#
+
+GPP = g++-4.8 -std=c++11 -g -Wall
+OUTDEP = lbcp.o work.o lsw.o handle.o itp.o rtp.o pause.o jmp.o
+OBJ = lbcp
+OUT = work.o
+DEP = std_lb.h  lbcp.h  lbwork.cxx
+
+INS = lbwork.cxx
+
+$(OBJ): $(OUTDEP) 
+	@printf "\n=====================generating $(OBJ)================== \n"
+	@printf "\n"
+	$(GPP) $(OUTDEP) \
+	-o $(OBJ)
+
+$(OUT): $(DEP)
+	$(GPP) \
+	-c $(INS) -o $(OUT)
+
+lbcp.o: std_lb.h lbcp.h lbcp.cxx
+	$(GPP) -c lbcp.cxx -o lbcp.o
+
+handle.o: std_lb.h handling.cxx
+	$(GPP) -c handling.cxx -o handle.o
+	
+lsw.o: handling.h std_lb.h lbcp.h handling_lsw.cxx handling.cxx
+	$(GPP) -c handling_lsw.cxx -o lsw.o
+	
+itp.o: handling.h std_lb.h lbcp.h handling_itp.cxx handling.cxx
+	$(GPP) -c handling_itp.cxx -o itp.o
+	
+rtp.o: handling.h std_lb.h lbcp.h handling_rtp.cxx handling.cxx
+	$(GPP) -c handling_rtp.cxx -o rtp.o
+	
+pause.o: handling.h std_lb.h lbcp.h handling_pause.cxx handling.cxx
+	$(GPP) -c handling_pause.cxx -o pause.o
+	
+jmp.o: handling.h std_lb.h lbcp.h handling_jmp.cxx handling.cxx
+	$(GPP) -c handling_jmp.cxx -o jmp.o
+	
+clean:
+	rm *.o

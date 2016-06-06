@@ -1,0 +1,16 @@
+lw r1, #a;
+pause r1, r2;
+lw r2, #b;
+pause r1, r2;
+sw r2, #0;
+pause r1, r2;
+beq r1, r2, #c;
+lw r1,#0;
+pause r1, r2;
+bne r1,r2, #d;
+jmp #e;
+pause r0, r1;
+pause r0, r2;
+pause r0, r3;
+pause r0, r4;
+

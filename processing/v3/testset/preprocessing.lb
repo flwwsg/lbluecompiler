@@ -1,0 +1,50 @@
+result of preprocessing for LBlue processor. all of imm are hex. tab width = 4
+
+lw rd, rs(imm);	 	-->	80 rd, rs, #imm
+lw rd, #imm;			-->	80 rd, r0, #imm
+
+sw rs, rt(imm);		-->	81 rs, rt,	#imm
+sw rs, #imm;			-->	81 rs, r0, #imm
+
+beq rs, rt, #imm;		-->	82 rs, rt, #imm
+
+bne rs, rt, #imm;		-->	83 rs, rt, #imm
+
+jmp #imm;				-->	C0 r0, r0, #imm
+
+add rd, rs, rt;			-->	01 rd, rs, rt
+add rd, rs;				-->	01 rd, rs, r0
+mov rd, rs;				-->	01 rd, rs, r0
+
+sub rd, rs, rt;			-->	02 rd, rs, rt
+
+and rd, rs, rt;			-->	10 rd, rs, rt
+
+or rd, rs, rt;				-->	11 rd, rs, rt
+
+xor rd, rs, rt;			-->	12 rd, rs, rt
+
+nor rd, rs, rt;			-->	13 rd, rs, rt
+
+slt rd, rs, rt;				-->	20 rd, rs, rt
+
+addi rd, rs, #imm;	-->	90 rd, rs, #imm
+
+andi rd, rs, #imm;	-->	91 rd, rs, #imm
+
+ori rd, rs, #imm;		-->	92 rd, rs, #imm
+
+xori rd, rs, #imm;	-->	93 rd, rs, #imm
+
+slti rd, rs, #imm;		-->	94 rd, rs, #imm
+
+pause rd, rs;				-->	F0 rd, rs
+pause ;						--> 	F0 r0, r0
+
+not rd, rs;				-->	93 rd, rs, #FFFF
+
+neg rd, rt;				-->	02 rd, r0, rt
+
+subi rd, rs, #imm		-->	90 rd, rs, rt, #IMM 			(2's comment of imm)
+
+

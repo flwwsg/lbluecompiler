@@ -1,0 +1,28 @@
+#This is a make file for testprocess.cxx
+#
+#author : DJW
+#
+#date:	Sat Apr 18 10:23:37 CST 2015
+#
+
+GPP = g++-4.8 -std=c++11 -g -Wall
+OUT = ts.o
+OBJ = ts
+DEP = std_lb.h  process.h process.cxx testprocess.cxx
+INS = testprocess.cxx
+
+$(OBJ): $(OUT) 
+#$(FLLIBL) $(FLLIBFL)
+# 	@printf "\n"
+	@printf "\n=====================generating $(OBJ)================== \n"
+	@printf "\n"
+	$(GPP) $(OUT) \
+	-o $(OBJ)
+# $(FLLIBL) $(FLLIBFL) $(FLLIBF)
+
+$(OUT): $(DEP)
+	$(GPP) \
+	-c $(INS) -o $(OUT)
+
+clean:
+	rm *.o

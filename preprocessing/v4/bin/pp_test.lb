@@ -1,0 +1,53 @@
+
+lw rd, rs, #im;	 	-->	lw rd , rs , #  imm ; 	--> 	80 rd  rs  imm
+lw rd, #i;			-->	lw rd , # imm 	;		--> 	80 rd  r0  imm
+
+sw rs, rt, #i;		-->	sw rs , rt , #  imm ; 	--> 	81 rs  rt  imm
+sw rs, #imm;			-->	sw rs , # imm ;			-->	81 rs  r0 imm
+
+beq rs, rt, #imm;		-->	beq rs , rt , # imm ;	-->	82 rs  rt  imm
+;1
+bne rs, rt, #imm;		-->	bne rs , rt , # imm ;	-->	83 rs  rt  imm
+;1
+jmp #imm;				-->	jmp # imm ; 			-->	C0 r0 r0 imm
+
+add rd, rs, rt;			-->	add rd , rs , rt ; 		-->	01 rd  rs  rt
+;1
+sub rd, rs, rt;			-->	sub rd , rs , rt ;		-->	02 rd  rs  rt
+;1
+and rd, rs, rt;			-->	and rd , rs , rt ;		-->	10 rd  rs  rt
+;1
+or rd, rs, rt;				-->	or rd , rs , rt ;			-->	11 rd  rs  rt
+;1
+xor rd, rs, rt;			-->	xor rd , rs , rt ;			-->	12 rd  rs  rt
+;1
+nor rd, rs, rt;			-->	nor rd , rs , rt ;		-->	13 rd  rs  rt
+;1
+slt rd, rs, rt;				-->	slt rd , rs , rt ; 			-->	20 rd  rs  rt
+;1
+addi rd, rs, #imm;	-->	addi rd , rs , # imm ; -->	90 rd  rs imm
+;1
+andi rd, rs, #imm;	-->	andi rd , rs , # imm ; -->	91 rd  rs imm
+;1
+ori rd, rs, #m;		-->	ori rd , rs , # imm ;   -->	92 rd  rs imm
+;1
+xori rd, rs, #imm;	-->	xori rd , rs , # imm ; -->	93 rd  rs imm
+;1
+slti rd, rs, #imm;		-->	slti rd , rs , # imm ; -->	94 rd  rs imm
+;1
+
+pause rd, rs;				-->	pause rd , rs ;			-->	F0 rd  rs
+pause ;						             		               --> 	F0 r0 r0
+;1
+not rd, rs;				-->	not rd , rs ; 				-->	93 rd  rs FFFF
+;1
+neg rd, rt;				-->	neg rd , rt ;				-->	02 rd  r0 rt
+;1
+subi rd, rs, #imm;		-->	subi rd , rs , # imm ; -->	90 rd  rs  rt  IMM 		
+;(2's comment of imm)
+
+mov rd, rs;				-->	mov rd , rs ;				-->	01 rd  rs  r0
+;1
+
+;teset pause
+pause r1, r2, #9;

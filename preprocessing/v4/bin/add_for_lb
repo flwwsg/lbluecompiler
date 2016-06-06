@@ -1,0 +1,22 @@
+lw r1, #000;
+lw r3, #00F;
+lw r2, #001;
+add r1, r2, r1;
+beq r1, r3, #001;
+jmp #004;
+xor r1, r1, r1;
+bne r1, r0, #007;
+or r1, r1, r3;
+bne r1, r3, #006;
+and r1, r1, r4;
+bne r1, r5, #005;
+slt r1, r1, r3;
+bne r1, r6, #004;
+pause;
+pause;
+pause;
+pause;
+pause;
+
+
+

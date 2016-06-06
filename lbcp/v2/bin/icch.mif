@@ -1,0 +1,31 @@
+--This file used for initializating instruction cacche of LBlue.
+--The lblue compiler generated Memory Initialization File (.mif)
+
+WIDTH=32;
+DEPTH=1024;
+
+ADDRESS_RADIX=HEX;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+	000  :   00000000;
+	001  :   80100000;
+	002  :   8030000f;
+	[003..007]  :   80200001;
+	008  :   01125000;
+	009  :   01110000;
+	00A  :   82013001;
+	00B  :   C0000004;
+	00C  :   12111000;
+	00D  :   83010007;
+	00E  :   11113000;
+	00F  :   83013006;
+	010  :   10114000;
+	011  :   83015005;
+	012  :   20113000;
+	013  :   83016004;
+	[014..018]  :   F0000000;
+	019  :   F0012009;
+	01A  :   F0012000;
+	[01B..3FF]  :   00000000;
+END;

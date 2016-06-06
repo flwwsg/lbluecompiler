@@ -1,0 +1,56 @@
+#This is a make file for lbcp.cxx
+#
+#author : DJW
+#
+#date:	Mon Apr 20 14:28:27 CST 2015
+#
+vpath %.cxx ../src
+vpath %.h ../headers
+
+GPP = g++-4.8 -std=c++11 -Wall
+OBJ =ts 
+
+
+ts: testprocess.cxx lbcp.a
+	@printf "\n=====================generating $(OBJ)================== \n"
+	@printf "\n"
+	$(GPP)  $^ \
+	-o $@
+	
+lbcp.a: pplbcp.o sub_pplbcp.o itp.o rtp.o stp.o jtp.o \
+			plbcp.o sub_plbcp.o \
+			sub_wm.o wm.o
+	$(AR) $(ARFLAGS) $@ $?
+	
+plbcp.o: plbcp.cxx plbcp.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+sub_plbcp.o: sub_plbcp.cxx plbcp.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+pplbcp.o: pplbcp.cxx header_lb.h pplbcp.h 
+	$(GPP) -c $< -o $@
+
+sub_pplbcp.o: sub_pplbcp.cxx header_lb.h pplbcp.h 
+	$(GPP) -c $< -o $@
+	
+itp.o: handling_itp.cxx  header_lb.h pplbcp.h  
+	$(GPP) -c $< -o $@
+	
+rtp.o: handling_rtp.cxx  header_lb.h pplbcp.h  
+	$(GPP) -c $< -o $@
+	
+stp.o: handling_special.cxx  header_lb.h pplbcp.h 
+	$(GPP) -c $< -o $@
+	
+jtp.o: handling_jtp.cxx  header_lb.h pplbcp.h  
+	$(GPP) -c $< -o $@
+	
+sub_wm.o: sub_wmif.cxx wmif.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+wm.o : wmif.cxx sub_wmif.cxx wmif.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+clean:
+	rm *.o

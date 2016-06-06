@@ -1,0 +1,16 @@
+Lw  r14,  r13 (imm);	 	-->	80 rd  rs  imm
+LW  r12, # imm;			-->	80 rd  r0  imm
+
+sw  R9, r0 (IMM);		-->	81 rs  rt  imm
+SW  r1, # imm;			-->	81 rs  r0 imm
+addi R1, R2, #immm;	-->	90 R1  R2 immm		//done
+
+sub R1, r2, r3;
+xor r1, r2, R3;
+not r1, r2;
+neg r1, r3;
+mov r1, r4;
+pause r1, r2;
+pause;;;;;;;;;;;;;;;;;;;;;;
+jmp #890;;;;;;;;;;;;
+subi r1, r2, #immm;;;;;;;;;;;;;;;;;

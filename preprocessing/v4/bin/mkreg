@@ -1,0 +1,13 @@
+#This is a makefile for compiling zipcode.cxx 
+
+#vpath %.cxx ../src
+#vpath %.h ../headers
+
+tmp_reg: tmp.o
+	g++-4.8 -std=c++11 -g -Wall \
+	$< -o $@ \
+	/usr/local/lib64/boost/*.a
+	
+tmp.o: tmp_regex.cxx
+	g++-4.8 -std=c++11 -g -Wall \
+	-c $< -o $@ 

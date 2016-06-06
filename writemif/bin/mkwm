@@ -1,0 +1,30 @@
+#This is a make file for wmif_test.cxx
+#
+#author : DJW
+#
+#date:		Wed Apr 22 14:48:10 CST 2015
+#
+vpath %.cxx ../src
+vpath %.h ../headers
+
+GPP = g++-4.8 -std=c++11 -g -Wall
+OBJ =ts 
+
+
+wm: ts.o wm.o sub_wm.o
+	@printf "\n=====================generating $(OBJ)================== \n"
+	@printf "\n"
+	$(GPP)  $^ \
+	-o $@
+	
+ts.o: wmif_test.cxx wmif.h header_lb.h
+	$(GPP) -c $<  -o $@
+
+sub_wm.o: sub_wmif.cxx wmif.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+wm.o : wmif.cxx sub_wmif.cxx wmif.h header_lb.h
+	$(GPP) -c $<  -o $@
+	
+clean:
+	rm *.o
